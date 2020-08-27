@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:prism="http://prismlibrary.com"
+            x:Class="XamarinPrismQrGen.Views.MainPage"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:local="clr-namespace:XamarinPrismQrGen.Views"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="#2196F3"
+            BarTextColor="White"
+            Title="{Binding Title}">
+    <!-- android:TabbedPage.ToolbarPlacement 는 파란줄이 뜨지만, 이것은 그다지 신경 쓸 필요가 없다.  (인텔리센스에서 뜨지도 않음 ->)(프로퍼티가 아니라,
+    실제 생성자의 매개변수를 의미
+    예를들어 On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom); 에서 ToolbarPlacement.Bottom부분-->
+    <TabbedPage.Children>
+        <local:ViewA/>
+        <local:ViewB/>
+    </TabbedPage.Children>
+</TabbedPage>
