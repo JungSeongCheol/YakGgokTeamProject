@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             x:Class="XamarinPrismQrGen.Views.QR"
+             Title="{Binding Title}">
+
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <!--<Label Text="{Binding Title}"/>-->
+        <Label Text="{Binding Title}" />
+        <Button Text="Navigate to MainPage" Command="{Binding NavigateCommand}"/>
+        <zxing:ZXingBarcodeImageView WidthRequest="300" HeightRequest="100" BarcodeValue="1337"
+                                         BarcodeFormat="QR_CODE"/>
+    </StackLayout>
+    
+</ContentPage>
