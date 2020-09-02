@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:b="clr-namespace:Xam.Behaviors;assembly=Xam.Behaviors"
+             Title="{Binding Title}"
+             x:Class="RealYgApp.Views.DetailPage">
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Frame 
+           BackgroundColor="AliceBlue"
+           BorderColor="Black"
+           CornerRadius="5"
+           HasShadow="True"
+           Padding="8"
+           HorizontalOptions="Center"
+           VerticalOptions="Center">
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition Height="*"/>
+                        <RowDefinition />
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label Grid.Row="0" Grid.Column="0" Text="진료일" FontAttributes="Bold" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="5"/>
+                    <Label Grid.Row="0" Grid.Column="1"  Text="{Binding TDate}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HeightRequest="50" Margin="0,0,10,0" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="병원" FontAttributes="Bold" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="5"/>
+                    <Label Grid.Row="1" Grid.Column="1"  Text="{Binding HoName}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  HeightRequest="50" Margin="0,0,10,0" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="병원주소" FontAttributes="Bold" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="5"/>
+                    <Button Grid.Row="2" Grid.Column="1" BackgroundColor="AliceBlue" Text="{Binding HoLocation}" Command="{Binding HoMapCommand}" FontSize="15" HeightRequest="50" Margin="0,0,10,0" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="처방약" FontAttributes="Bold" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="5"/>
+                    <Label Grid.Row="3" Grid.Column="1"  Text="{Binding Medicine}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HeightRequest="50" Margin="0,0,10,0" />
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="약받은 날짜" FontAttributes="Bold" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="5"/>
+                    <Label Grid.Row="4" Grid.Column="1"  Text="{Binding GetDate}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HeightRequest="50" Margin="0,0,10,0" />
+
+                    <Label Grid.Row="5" Grid.Column="0" Text="약국이름" FontAttributes="Bold" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="5"/>
+                    <Label Grid.Row="5" Grid.Column="1"  Text="{Binding ParmName}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HeightRequest="50" Margin="0,0,10,0" />
+
+                    <Label Grid.Row="6" Grid.Column="0" Text="약국주소" FontAttributes="Bold" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="5"/>
+                    <Button Grid.Row="6" Grid.Column="1" BackgroundColor="AliceBlue"  Text="{Binding Plocation}" Command="{Binding PMapCommand}" FontSize="15" HorizontalOptions="Fill" HeightRequest="50" Margin="0,0,10,0" />
+                </Grid>
+                
+                
+                
+                
+            </StackLayout>
+        </Frame>
+
+    </StackLayout>
+</ContentPage>

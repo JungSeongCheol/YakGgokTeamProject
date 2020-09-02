@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:b="clr-namespace:Xam.Behaviors;assembly=Xam.Behaviors"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Title="{Binding Title}"
+             x:Class="RealYgApp.Views.PatientPage">
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="기간" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="5"/>
+            <DatePicker Date="{Binding StartDatePicker}" HeightRequest="50" Grid.Column="1" Format="yyyy-MM-dd" Margin="0,0,10,0" />
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="~" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="5"/>
+            <DatePicker Date="{Binding EndDatePicker}" HeightRequest="50" Grid.Column="1"  Format="yyyy-MM-dd" Margin="0,0,10,0" />
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Text="병원검색" FontSize="15" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="5"/>
+            <Picker Grid.Column="1" Title="전체" ItemsSource="{Binding Searchlist}" ItemDisplayBinding="{Binding Subject}" SelectedItem="{Binding Selecteditem, Mode=TwoWay}" />
+            <Entry Grid.Column="2" Text="{Binding InputSearch, Mode=TwoWay}"  />
+            <Button  Grid.Column="3" Text="검색" HeightRequest="50" TextColor="White" FontSize="Body" Margin="5" Command="{Binding CheackCommand}"/>
+        </Grid>
+
+        <Label Text = "{Binding ScriptCount}" FontSize="Small" HorizontalTextAlignment="Center"/>
+
+        <ListView ItemsSource="{Binding Patients, Mode=TwoWay}" SelectionMode="Single"  RowHeight="120" SelectedItem="{Binding Seletedlist}" >
+            <b:Interaction.Behaviors>
+                <b:BehaviorCollection>
+                    <b:EventToCommand EventName="ItemSelected" Command="{Binding ShowUserDetailCommand}"/>
+                </b:BehaviorCollection>
+            </b:Interaction.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Fill" BackgroundColor="AliceBlue" >
+                            <Label Text = "{Binding TDate}" FontSize="20" HorizontalOptions="StartAndExpand" FontAttributes="Bold" Margin="10,0"/>
+                            <Label Text = "{Binding HoName}" FontSize="15" HorizontalOptions="EndAndExpand" Margin="10,0"/>
+                            <Label Text = "{Binding ParmName}" FontSize="15" HorizontalOptions="EndAndExpand" Margin="10,0"/>
+                            <Label Text = "{Binding Medicine}" FontSize="15" HorizontalOptions="EndAndExpand" Margin="10,0"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <!--TODO command-->
+        <Button Text="GoHome" />
+    </StackLayout>
+
+</ContentPage>
