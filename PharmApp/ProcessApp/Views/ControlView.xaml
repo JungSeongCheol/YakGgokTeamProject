@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="ProcessApp.Views.ControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             Width="1000" Height="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Text="A약 수량" Height="50" Width="100" Margin="10"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <Button Content="-" Command="{Binding AMinusCommand}" Height="50" Width="50" FontSize="20"/>
+                <TextBlock Text="{Binding AM}" Height="50" Width="50" Margin="5"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <Button Content="+" Command="{Binding APlusCommand}" Height="50" Width="50" FontSize="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="B약 수량" Height="50" Width="100" Margin="10"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <Button Content="-" Command="{Binding BMinusCommand}" Height="50" Width="50" FontSize="20"/>
+                <TextBlock Text="{Binding BM}" Height="50" Width="50" Margin="5"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <Button Content="+" Command="{Binding BPlusCommand}" Height="50" Width="50" FontSize="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="C약 수량" Height="50" Width="100" Margin="10"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <Button Content="-" Command="{Binding CMinusCommand}" Height="50" Width="50" FontSize="20"/>
+                <TextBlock Text="{Binding CM}" Height="50" Width="50" Margin="5"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <Button Content="+" Command="{Binding CPlusCommand}" Height="50" Width="50" FontSize="20"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Command="{Binding OutPutCommand}"
+                    Content="출력" Height="50" Width="200" Margin="10"/>
+            <Button Command="{Binding UpCommand}"  
+                    Content="입력" Height="50" Width="200" Margin="10"/>
+            <Button Command="{Binding LoginCommand}" CommandParameter="LoginView"
+                    Content="로그아웃" Height="50" Width="200" Margin="10"/>
+            <Button 
+                Command="{Binding BackCommand}" CommandParameter="MenuView"
+                Height="50" Width="200"
+                HorizontalAlignment="Right" Content="뒤로"/>
+
+        </StackPanel>
+        <ListView ItemsSource="{Binding PsList}"  Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="A" Width="200" DisplayMemberBinding="{Binding AM}"/>
+                    <GridViewColumn Header="B" Width="200" DisplayMemberBinding="{Binding BM}"/>
+                    <GridViewColumn Header="C" Width="400" DisplayMemberBinding="{Binding CM}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

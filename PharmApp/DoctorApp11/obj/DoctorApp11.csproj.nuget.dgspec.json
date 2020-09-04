@@ -1,0 +1,101 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\am175\\source\\repos\\DoctorApp11\\DoctorApp11\\DoctorApp11.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\am175\\source\\repos\\DoctorApp11\\DoctorApp11\\DoctorApp11.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\am175\\source\\repos\\DoctorApp11\\DoctorApp11\\DoctorApp11.csproj",
+        "projectName": "DoctorApp11",
+        "projectPath": "C:\\Users\\am175\\source\\repos\\DoctorApp11\\DoctorApp11\\DoctorApp11.csproj",
+        "packagesPath": "C:\\Users\\am175\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\am175\\source\\repos\\DoctorApp11\\DoctorApp11\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\am175\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\am175\\source\\repos\\DoctorApp11\\LoginApp\\LoginApp.csproj": {
+                "projectPath": "C:\\Users\\am175\\source\\repos\\DoctorApp11\\LoginApp\\LoginApp.csproj"
+              },
+              "C:\\Users\\am175\\source\\repos\\DoctorApp11\\ProcessApp\\ProcessApp.csproj": {
+                "projectPath": "C:\\Users\\am175\\source\\repos\\DoctorApp11\\ProcessApp\\ProcessApp.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Prism.Core": {
+              "target": "Package",
+              "version": "[7.2.0.1422, )"
+            },
+            "Prism.Unity": {
+              "target": "Package",
+              "version": "[7.2.0.1422, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\am175\\source\\repos\\DoctorApp11\\LoginApp\\LoginApp.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\am175\\source\\repos\\DoctorApp11\\LoginApp\\LoginApp.csproj",
+        "projectName": "LoginApp",
+        "projectPath": "C:\\Users\\am175\\source\\repos\\DoctorApp11\\LoginApp\\LoginApp.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\am175\\source\\repos\\DoctorApp11\\ProcessApp\\ProcessApp.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\am175\\source\\repos\\DoctorApp11\\ProcessApp\\ProcessApp.csproj",
+        "projectName": "ProcessApp",
+        "projectPath": "C:\\Users\\am175\\source\\repos\\DoctorApp11\\ProcessApp\\ProcessApp.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\am175\\source\\repos\\DoctorApp11\\LoginApp\\LoginApp.csproj": {
+                "projectPath": "C:\\Users\\am175\\source\\repos\\DoctorApp11\\LoginApp\\LoginApp.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

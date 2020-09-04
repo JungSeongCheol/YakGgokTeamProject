@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PharmApp", "DoctorApp11\PharmApp.csproj", "{88E3DBAE-F0D5-40C1-8FEC-D820F962BE9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginApp", "LoginApp\LoginApp.csproj", "{E97CAE9E-1D37-4410-814D-FC251CDEE07C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessApp", "ProcessApp\ProcessApp.csproj", "{23F87640-9D20-441F-8B34-AD91EC212FE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88E3DBAE-F0D5-40C1-8FEC-D820F962BE9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88E3DBAE-F0D5-40C1-8FEC-D820F962BE9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88E3DBAE-F0D5-40C1-8FEC-D820F962BE9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88E3DBAE-F0D5-40C1-8FEC-D820F962BE9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E97CAE9E-1D37-4410-814D-FC251CDEE07C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E97CAE9E-1D37-4410-814D-FC251CDEE07C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E97CAE9E-1D37-4410-814D-FC251CDEE07C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E97CAE9E-1D37-4410-814D-FC251CDEE07C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23F87640-9D20-441F-8B34-AD91EC212FE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23F87640-9D20-441F-8B34-AD91EC212FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23F87640-9D20-441F-8B34-AD91EC212FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23F87640-9D20-441F-8B34-AD91EC212FE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E0EC693-F2A0-4368-8EAD-483DE0E7F588}
+	EndGlobalSection
+EndGlobal
