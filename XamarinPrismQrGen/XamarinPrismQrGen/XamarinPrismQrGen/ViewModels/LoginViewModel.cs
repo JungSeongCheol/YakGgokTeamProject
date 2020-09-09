@@ -50,17 +50,6 @@ namespace XamarinPrismQrGen.ViewModels
 
         async void SignUp()
         {
-            //tcpClient = new TcpClient();
-            //try
-            //{
-            //    tcpClient.Connect("192.168.0.165", 9876);
-            //}
-            //catch (Exception)
-            //{
-
-            //}
-            //stream = tcpClient.GetStream();
-
             await _navigationService.NavigateAsync("SignUp");
         }
 
@@ -86,7 +75,7 @@ namespace XamarinPrismQrGen.ViewModels
 
             try
             {
-                tcpClient.Connect("192.168.0.165", 9876);
+                tcpClient.Connect("192.168.0.8", 9876);
             }
             catch (Exception)
             {

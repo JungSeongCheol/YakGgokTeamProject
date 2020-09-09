@@ -188,7 +188,7 @@ int main() {
 	WSAStartup(MAKEWORD(2, 2), &wsaData);
 	serverSocket = socket(AF_INET, SOCK_STREAM, NULL);
 
-	serverAddress.sin_addr.s_addr = htonl(INADDR_ANY);
+	serverAddress.sin_addr.s_addr = inet_addr("192.168.0.8");
 	serverAddress.sin_port = htons(9876);
 	serverAddress.sin_family = AF_INET;
 
