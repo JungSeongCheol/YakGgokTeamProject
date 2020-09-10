@@ -13,7 +13,7 @@
     실제 생성자의 매개변수를 의미
     예를들어 On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom); 에서 ToolbarPlacement.Bottom부분-->
     <TabbedPage.Children>
-        <local:ViewA/>
         <local:QR IconImageSource="QRicon.png"/>
+        <local:PatientPage/>
     </TabbedPage.Children>
 </TabbedPage>

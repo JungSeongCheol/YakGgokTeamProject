@@ -75,14 +75,14 @@ namespace XamarinPrismQrGen.ViewModels
 
             try
             {
-                tcpClient.Connect("192.168.0.8", 9876);
+                tcpClient.Connect("192.168.0.7", 9876);
             }
             catch (Exception)
             {
                 await App.Current.MainPage.DisplayAlert("경고", "서버가 연결되지 않았습니다.", "확인");
             }
             stream = tcpClient.GetStream();
-
+            Commons.ID = Id;
             byte[] buf = new byte[256];
             buf = Encoding.ASCII.GetBytes("[Login]" + Id + "," + Password);
             stream.Write(buf, 0, buf.Length);
