@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -99,22 +100,22 @@ namespace RealYgApp.ViewModels
 
             Title = "처방전 상세정보";
 
-            HoMapCommand = new DelegateCommand(GoHos);
-            PMapCommand = new DelegateCommand(GoParm);
+            HoMapCommand = new DelegateCommand(async () => await GoHos());
+            PMapCommand = new DelegateCommand(async () => await GoParm());
         }
 
-        private void GoHos()
+        private async Task GoHos()
         {
-            GetXY(HoLocation,HoName);
-        }
-        private void GoParm()
-        {
-            GetXY(Plocation, ParmName);
+            await GetXY(HoLocation,HoName);
         }
 
-        private async void GetXY(string Target, string Name)
+        private async Task GoParm()
         {
-            
+            await GetXY(Plocation, ParmName);
+        }
+
+        private async Task GetXY(string Target, string Name)
+        {
             string Temp = Target;
             WebClient wc = new WebClient() { Encoding = Encoding.UTF8 }; //API로 x,y좌표값 얻어오기
             XmlDocument doc = new XmlDocument();
@@ -134,7 +135,7 @@ namespace RealYgApp.ViewModels
 
             str.Append("&key=6677E95B-8E1C-38D1-8B74-875AE27E3B15");     //인증키
 
-            string xml = wc.DownloadString(str.ToString());
+            string xml = await wc.DownloadStringTaskAsync(str.ToString());
             doc.LoadXml(xml);
 
             XmlElement root = doc.DocumentElement;

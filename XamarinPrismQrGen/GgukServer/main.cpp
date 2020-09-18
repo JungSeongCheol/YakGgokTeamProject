@@ -6,7 +6,8 @@
 #include <sstream>
 #include <mutex>
 
-#include "mysql_connection.h"
+//#include "mysql_connection.h"
+#include <mysql_connection.h>
 #include "Client.h"
 
 #include <cppconn/driver.h>
@@ -16,7 +17,6 @@
 #include <cppconn/prepared_statement.h>
 
 #pragma comment (lib, "ws2_32.lib")
-
 #pragma comment(lib, "mysqlcppconn.lib")
 
 

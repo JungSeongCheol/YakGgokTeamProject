@@ -35,7 +35,7 @@
 
             <Label Grid.Column="0" Text="병원검색" FontSize="15" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="5"/>
             <Picker Grid.Column="1" Title="전체" ItemsSource="{Binding Searchlist}" ItemDisplayBinding="{Binding Subject}" SelectedItem="{Binding Selecteditem, Mode=TwoWay}" />
-            <Entry Grid.Column="2" Text="{Binding InputSearch, Mode=TwoWay}"  />
+            <Entry Grid.Column="2" Text="{Binding InputSearch, Mode=TwoWay}"/>
             <Button  Grid.Column="3" Text="검색" HeightRequest="50" TextColor="White" FontSize="Body" Margin="5" Command="{Binding CheackCommand}"/>
         </Grid>
 

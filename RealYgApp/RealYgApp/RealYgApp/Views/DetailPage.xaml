@@ -53,9 +53,6 @@
                     <Button Grid.Row="6" Grid.Column="1" BackgroundColor="AliceBlue"  Text="{Binding Plocation}" Command="{Binding PMapCommand}" FontSize="15" HorizontalOptions="Fill" HeightRequest="50" Margin="0,0,10,0" />
                 </Grid>
                 
-                
-                
-                
             </StackLayout>
         </Frame>
 

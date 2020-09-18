@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PatientMenuSolution.Views.PatientMenuPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4.5*"/>
+            <RowDefinition Height="4.5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" BackgroundColor="LightBlue" Margin="10,5,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="{Binding Title}" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0"/>
+            <ImageButton Grid.Column="1" Source="setting.png" HorizontalOptions="End"  VerticalOptions="Center" Command="{Binding GoMemDetailPageCommand}" Margin="10,0" BackgroundColor="LightBlue"/>
+        </Grid>
+
+        <Grid Grid.Row="1" BackgroundColor="LightSkyBlue" Margin="10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ImageButton Source="QRCode.png" HorizontalOptions="Fill" Margin="10" Command="{Binding GoQRPageCommand}" BackgroundColor="LightSkyBlue" Padding="10"/>
+            <StackLayout Grid.Row="1" HorizontalOptions="Center" Orientation="Horizontal">
+                <Label Text="{Binding QRMenu}" BackgroundColor="SteelBlue" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" Margin="5"/>
+                <Label Text="{Binding NoneQR}" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" Margin="5"/>
+            </StackLayout>
+        </Grid>
+
+        <Grid Grid.Row="2" BackgroundColor="LightSteelBlue" Margin="10,0,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ImageButton Source="medical.png" HorizontalOptions="Fill" Margin="10" Command="{Binding GoPrescriptionPageCommand}" BackgroundColor="LightSteelBlue" VerticalOptions="CenterAndExpand"/>
+            <Label Grid.Row="1" Text="{Binding Prescrip}" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Center"  Margin="0,0,0,10"/>
+        </Grid>
+
+        <!-- <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="LightSkyBlue" Margin="10,5,10,0">
+            <Image Source="QRCode.png" HorizontalOptions="End" />
+            <Button Text="{Binding QRMenu}"  BackgroundColor="LightSkyBlue"/>
+        </StackLayout>
+        <Button Grid.Row="2" Text="나의 처방전" BackgroundColor="CornflowerBlue" Margin="10,0,10,10"/> -->
+
+        <!--
+        <Frame BackgroundColor="LightSteelBlue" Margin="5,0" HeightRequest="70" >
+            <StackLayout VerticalOptions="Center">
+               
+                    <Label Text="병원 검색" HorizontalOptions="Start"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry Grid.Column="0" VerticalOptions="Center"/>
+                    <Button Grid.Column="1" Text="검색"/>
+                </Grid>
+            </StackLayout>
+        </Frame>
+        
+        <Frame BackgroundColor="LightSteelBlue" Margin="5,0" HeightRequest="70">
+            <StackLayout VerticalOptions="Center">
+                <Label Text="약국 검색" HorizontalOptions="Start"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry Grid.Column="0" VerticalOptions="Center"/>
+                    <Button Grid.Column="1" Text="검색"/>
+                </Grid>
+            </StackLayout>
+        </Frame> -->
+
+    </Grid>
+
+</ContentPage>

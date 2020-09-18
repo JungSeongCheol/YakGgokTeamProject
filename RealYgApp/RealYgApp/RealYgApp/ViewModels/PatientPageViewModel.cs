@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RealYgApp.ViewModels
 {
@@ -22,8 +23,9 @@ namespace RealYgApp.ViewModels
         public ObservableCollection<Hospital> Searchlist { get; set; }
 
         public DelegateCommand CheackCommand { get; private set; }
+
         private DelegateCommand showUserDetailCommand;
-        public DelegateCommand ShowUserDetailCommand => showUserDetailCommand ?? (showUserDetailCommand = new DelegateCommand(ExecuteNavigateCommand));
+        public DelegateCommand ShowUserDetailCommand => showUserDetailCommand ?? (showUserDetailCommand = new DelegateCommand(async()=> await ExecuteNavigateCommand()));
 
 
         private string scriptCount;
@@ -111,7 +113,7 @@ namespace RealYgApp.ViewModels
             SQLConn();
             init_cmb();
         }
-        async void ExecuteNavigateCommand()
+        async Task ExecuteNavigateCommand()
         {
             NavigationParameters p = new NavigationParameters();
             //p.add(key,value)
