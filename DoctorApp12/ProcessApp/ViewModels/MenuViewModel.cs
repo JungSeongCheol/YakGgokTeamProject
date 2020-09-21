@@ -407,9 +407,9 @@ namespace ProcessApp.ViewModels
                     if (!string.IsNullOrEmpty(Datee))
                     {
                         MySqlParameter paramDatee = new MySqlParameter("@TDatee", MySqlDbType.VarChar);
-                        paramDatee.Value = DateTime.Parse(Datee).ToString("yyyy-MM-dd") + "% ";
+                        paramDatee.Value = DateTime.Parse(Datee).ToString("yyyy-MM-dd") + "%";
                         cmd.Parameters.Add(paramDatee);
-                        MessageBox.Show(strQuery + paramDatee.Value);
+                        //MessageBox.Show(strQuery + paramDatee.Value);
                     }
 
 
