@@ -159,7 +159,7 @@ namespace ProcessApp.ViewModels
             //string where  = " Where ";
             string _Hos = " HospitalNum = @HospitalNum ";
            // string _MM = "  Medicine = @Medicine ";
-            string _Datee = " TDate = @TDatee ";
+            string _Datee = " TDate Like @TDatee ";
             string _PatientId = " PatientId = @PatientId ";
 
 
@@ -242,7 +242,7 @@ namespace ProcessApp.ViewModels
                     if (!string.IsNullOrEmpty(Datee))
                     {
                         MySqlParameter paramDatee = new MySqlParameter("@TDatee", MySqlDbType.VarChar);
-                        paramDatee.Value = Datee;
+                        paramDatee.Value = DateTime.Parse(Datee).ToString("yyyy-MM-dd") + "%";
                         cmd.Parameters.Add(paramDatee);
                     }
 

@@ -20,7 +20,7 @@
             <TextBox Text="{Binding PatientId}" VerticalAlignment="Center" Width="150" Margin="10"/>
 
             <TextBlock Text="날짜" VerticalAlignment="Center"/>
-            <DatePicker SelectedDate="{Binding TDatee}" VerticalAlignment="Center" Width="150" Margin="10"/>
+            <DatePicker SelectedDate="{Binding Datee}" VerticalAlignment="Center" Width="150" Margin="10"/>
 
             <!--<TextBlock Text="약종류" VerticalAlignment="Center"/>
             <ComboBox ItemsSource="{Binding MList}" SelectedItem="{Binding Medicine}" 
