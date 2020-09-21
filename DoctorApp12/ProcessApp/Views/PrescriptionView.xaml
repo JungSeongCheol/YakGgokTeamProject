@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="ProcessApp.Views.PrescriptionView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             Width="1000" Height="600" Background="AliceBlue">
+    <ScrollViewer Visibility="Visible" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Margin="10">
+        <StackPanel>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="진료일" FontSize="25" Grid.Row="0" Grid.Column="0"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="환자 아이디" FontSize="25" Grid.Row="1" Grid.Column="0"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="환자 이름" FontSize="25" Grid.Row="2" Grid.Column="0"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="병원" FontSize="25" Grid.Row="3" Grid.Column="0"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="병원주소" FontSize="25" Grid.Row="4" Grid.Column="0"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="처방약" FontSize="25" Grid.Row="5" Grid.Column="0"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="약받은 날짜" FontSize="25" Grid.Row="6" Grid.Column="0"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="약국이름" FontSize="25" Grid.Row="7" Grid.Column="0"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="약국주소" FontSize="25" Grid.Row="8" Grid.Column="0"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <TextBlock Text="{Binding TDate}" FontSize="25" Grid.Row="0" Grid.Column="1"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding PId}" FontSize="25" Grid.Row="1" Grid.Column="1"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding PName}" FontSize="25" Grid.Row="2" Grid.Column="1"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding HoName}" FontSize="25" Grid.Row="3" Grid.Column="1"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Holocation}" FontSize="25" Grid.Row="4" Grid.Column="1"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Medicine}" FontSize="25" Grid.Row="5" Grid.Column="1"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding GetDate}" FontSize="25" Grid.Row="6" Grid.Column="1"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding PharmName}" FontSize="25" Grid.Row="7" Grid.Column="1"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Plocation }" FontSize="25" Grid.Row="8" Grid.Column="1"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button Command="{Binding BackCommand}" CommandParameter="MenuView" Content="뒤로"
+                        Grid.Row="9" Grid.ColumnSpan="2" MinWidth="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>
