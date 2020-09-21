@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ProcessApp.ViewModels 
+namespace ProcessApp.ViewModels
 {
     public class MenuViewModel : BindableBase
     {
@@ -76,7 +76,7 @@ namespace ProcessApp.ViewModels
             get => patientId;
             set => SetProperty(ref patientId, value);
         }
-               
+
         private string date = null;
 
         public string Datee
@@ -159,7 +159,7 @@ namespace ProcessApp.ViewModels
 
         private string sel()
         {
-            string strQuery = " SELECT Name " + 
+            string strQuery = " SELECT Name " +
                               " FROM pmemtbl " +
                               " WHERE Id = @Id";
 
@@ -180,7 +180,7 @@ namespace ProcessApp.ViewModels
                     var tmp = cmd.ExecuteScalar();
                     if (tmp == null) return null;
                     return tmp.ToString();
-                
+
                 }
             }
             catch (Exception ex)
@@ -190,9 +190,14 @@ namespace ProcessApp.ViewModels
 
         }
 
+        private bool Exist_Sel()
+        {
+            return sel() == null ? false : true;
+        }
+
         private void InputV()
         {
-            
+
             if (string.IsNullOrEmpty(PatientId) || (AM == 0 && BM == 0 && CM == 0))
             {
                 MessageBox.Show("정보를 입력해주세요");
@@ -206,8 +211,10 @@ namespace ProcessApp.ViewModels
                               " ( @PatientId, " + " @HospitalNum, " + " @A, " + "@B, " + "@C, " +
                               " @TDate, " + " @HoName, " + " @Holocation, " +
                               " @PName); ";
-            
+
             //InfoViewModel.SelectItems();
+            if (!Exist_Sel())
+            { MessageBox.Show("존재하지않는 환자 ID입니다.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error); return; }
 
             try
             {
@@ -223,7 +230,7 @@ namespace ProcessApp.ViewModels
                     cmd.Parameters.Add(paramHospitalNum);
 
                     MySqlParameter paramName = new MySqlParameter("@PName", MySqlDbType.VarChar);
-                    paramName.Value = sel() == null ? "": sel().ToString().Trim();
+                    paramName.Value = sel() == null ? "" : sel().ToString().Trim();
                     cmd.Parameters.Add(paramName);
 
                     MySqlParameter paramPatientId = new MySqlParameter("@PatientId", MySqlDbType.Int32);
@@ -245,7 +252,7 @@ namespace ProcessApp.ViewModels
                     MySqlParameter paramDatee = new MySqlParameter("@TDate", MySqlDbType.VarChar);
                     paramDatee.Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                     cmd.Parameters.Add(paramDatee);
-                    
+
                     MySqlParameter paramHolocation = new MySqlParameter("@Holocation", MySqlDbType.VarChar);
                     paramHolocation.Value = LoginApp.ViewModels.LoginViewModel.Infoo[0].ADDR;
                     cmd.Parameters.Add(paramHolocation);
@@ -267,7 +274,7 @@ namespace ProcessApp.ViewModels
             MessageBox.Show("입력되었습니다.");
         }
 
-                private void Infos(string uri)
+        private void Infos(string uri)
         {
             _regionManager.RequestNavigate("Hello", uri);
 
@@ -314,7 +321,7 @@ namespace ProcessApp.ViewModels
             string _Medi = " PharmNum = @PharmNum ";
             //string _MM = "  Medicine = @Medicine ";
             string _Datee = " TDate Like @TDatee ";
-            string _PatientId = " PatientId = @PatientId " ;
+            string _PatientId = " PatientId = @PatientId ";
 
             if (string.IsNullOrEmpty(Datee) && string.IsNullOrEmpty(PatientId) && string.IsNullOrEmpty(MediNum))
             {
@@ -352,7 +359,7 @@ namespace ProcessApp.ViewModels
 
                 else if (string.IsNullOrEmpty(PatientId))
                 {
-                    strQuery += ( _Medi + " AND " + _Datee);
+                    strQuery += (_Medi + " AND " + _Datee);
                 }
 
                 else
@@ -402,7 +409,7 @@ namespace ProcessApp.ViewModels
                         MySqlParameter paramDatee = new MySqlParameter("@TDatee", MySqlDbType.VarChar);
                         paramDatee.Value = DateTime.Parse(Datee).ToString("yyyy-MM-dd") + "% ";
                         cmd.Parameters.Add(paramDatee);
-                        MessageBox.Show(strQuery+ paramDatee.Value);
+                        MessageBox.Show(strQuery + paramDatee.Value);
                     }
 
 
@@ -410,9 +417,9 @@ namespace ProcessApp.ViewModels
 
 
                     MySqlDataReader reader = cmd.ExecuteReader();
-                    
+
                     int cnt = 0;
-                    
+
                     while (reader.Read())
                     {
                         var temp = new PrescriptionModel
@@ -420,17 +427,17 @@ namespace ProcessApp.ViewModels
                             IdSub = int.Parse(reader["IdSub"].ToString()),
                             PatientId = reader["PatientId"].ToString(),
                             HospitalNum = int.Parse(reader["HospitalNum"].ToString()),
-                            PharmNum = (string.IsNullOrEmpty(reader["PharmNum"].ToString()))? 0: int.Parse(reader["PharmNum"].ToString()),
+                            PharmNum = (string.IsNullOrEmpty(reader["PharmNum"].ToString())) ? 0 : int.Parse(reader["PharmNum"].ToString()),
                             AM = int.Parse(reader["A"].ToString()),
                             BM = int.Parse(reader["B"].ToString()),
                             CM = int.Parse(reader["C"].ToString()),
                             TDate = reader["TDate"].ToString(),
-                            getDate = (string.IsNullOrEmpty(reader["getDate"].ToString()))?"":reader["getDate"].ToString(),
+                            getDate = (string.IsNullOrEmpty(reader["getDate"].ToString())) ? "" : reader["getDate"].ToString(),
                             HoName = reader["HoName"].ToString(),
                             Holocation = reader["Holocation"].ToString(),
-                            PharmName = (string.IsNullOrEmpty(reader["PharmName"].ToString()))? "" : reader["PharmName"].ToString(),
-                            Plocation = (string.IsNullOrEmpty(reader["Plocation"].ToString()))? "" : reader["Plocation"].ToString(),
-                            PName = (string.IsNullOrEmpty(reader["PName"].ToString()))? "" : reader["PName"].ToString(),
+                            PharmName = (string.IsNullOrEmpty(reader["PharmName"].ToString())) ? "" : reader["PharmName"].ToString(),
+                            Plocation = (string.IsNullOrEmpty(reader["Plocation"].ToString())) ? "" : reader["Plocation"].ToString(),
+                            PName = (string.IsNullOrEmpty(reader["PName"].ToString())) ? "" : reader["PName"].ToString(),
                             Medicine = " A : " + reader["A"].ToString() + "  B : " + reader["B"].ToString() +
                                        " C : " + reader["C"].ToString()
                         };
@@ -448,6 +455,6 @@ namespace ProcessApp.ViewModels
 
         }
 
-        
+
     }
 }
