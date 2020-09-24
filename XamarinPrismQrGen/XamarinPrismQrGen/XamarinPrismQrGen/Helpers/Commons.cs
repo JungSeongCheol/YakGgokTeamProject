@@ -8,10 +8,10 @@ namespace XamarinPrismQrGen.Helpers
     public class Commons
     {
         internal static readonly string CONSTRING =
-        "Server=192.168.0.7;Port=3306;Database=member;uid=root;password=mysql_p@ssw0rd"; //192.168.0.165
+        "Server=192.168.0.10;Port=3306;Database=member;uid=root;password=mysql_p@ssw0rd"; //192.168.0.165
 
 
-        internal static readonly string CONSTRINGList = "Server=192.168.0.7;Port=3306;" +
+        internal static readonly string CONSTRINGList = "Server=192.168.0.10;Port=3306;" +
                "Database=gguklist;Uid=root;Pwd=mysql_p@ssw0rd";
 
         //환자 고유 ID

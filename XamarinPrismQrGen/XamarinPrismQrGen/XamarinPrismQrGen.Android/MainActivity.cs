@@ -3,6 +3,8 @@ using Android.Content.PM;
 using Android.OS;
 using Prism;
 using Prism.Ioc;
+using System.Net.Sockets;
+using XamarinPrismQrGen.ViewModels;
 
 namespace XamarinPrismQrGen.Droid
 {
@@ -28,6 +30,25 @@ namespace XamarinPrismQrGen.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public override void OnBackPressed()
+        {
+            Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
+            
+            builder.SetPositiveButton("확인", (senderAlert, args) => {
+                LoginViewModel.tcpClient.Close();
+                Finish();
+            });
+
+            builder.SetNegativeButton("취소", (senderAlert, args) => {
+                return;
+            });
+
+            Android.App.AlertDialog alterDialog = builder.Create();
+            alterDialog.SetTitle("알림");
+            alterDialog.SetMessage("프로그램을 종료하시겠습니까?");
+            alterDialog.Show();
         }
     }
 

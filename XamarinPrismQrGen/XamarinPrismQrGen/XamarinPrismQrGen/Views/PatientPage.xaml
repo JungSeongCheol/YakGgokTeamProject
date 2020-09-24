@@ -62,6 +62,5 @@
         </ListView>
 
         <!--TODO command-->
-        <Button Text="GoHome" />
     </StackLayout>
 </ContentPage>

@@ -155,7 +155,7 @@ namespace XamarinPrismQrGen.ViewModels
             {
                 try
                 {
-                    string strqry = " SELECT TDate, ParmName, HoName, Holocation, getdate, Medicine,Plocation FROM prescribeinfo " +
+                    string strqry = " SELECT TDate, ParmName, HoName, Holocation, getdate, Medicine,Plocation, pName FROM prescribeinfo " +
                                     " WHERE PatientId = @Id " +
                                     " AND  Tdate Between @StartDatePicker AND @EndDatePicker " +
                                     " AND HoName like @Subject " +
@@ -205,6 +205,7 @@ namespace XamarinPrismQrGen.ViewModels
                                 new Patient
                                 {
                                     TDate = DateTime.Parse(R["TDate"].ToString()).ToString("yyyy-MM-dd tt hh:mm"),
+                                    PName = R["pName"].ToString(),
                                     ParmName = R["ParmName"].ToString(),
                                     Plocation = R["Plocation"].ToString(),
                                     HoName = R["HoName"].ToString(),

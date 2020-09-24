@@ -13,5 +13,6 @@ namespace XamarinPrismQrGen.Models
         public string ParmName { get; set; }
         public string Plocation { get; set; }
         public string Medicine { get; set; }
+        public string PName { get; set; }
     }
 }

@@ -90,7 +90,7 @@ namespace XamarinPrismQrGen.ViewModels
             }
             try
             {
-                tcpClient.Connect("192.168.0.7", 9876);
+                tcpClient.Connect("192.168.0.10", 9876);
             }
             catch (Exception)
             {
