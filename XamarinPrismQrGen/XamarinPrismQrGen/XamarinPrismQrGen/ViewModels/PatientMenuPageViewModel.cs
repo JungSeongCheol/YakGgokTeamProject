@@ -99,7 +99,7 @@ namespace XamarinPrismQrGen.ViewModels
         /// </summary>
         /// <returns></returns>
 
-        async void GoQRPage()
+        async Task GoQRPage()
         {
             NavigationParameters p = new NavigationParameters();
             await _navigationService.NavigateAsync("QR");
