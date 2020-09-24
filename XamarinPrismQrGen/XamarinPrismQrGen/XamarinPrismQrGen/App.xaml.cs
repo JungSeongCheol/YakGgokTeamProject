@@ -30,7 +30,7 @@ namespace XamarinPrismQrGen
             containerRegistry.RegisterForNavigation<QR>();
             containerRegistry.RegisterForNavigation<Login, LoginViewModel>();
             containerRegistry.RegisterForNavigation<SignUp>();
-            containerRegistry.RegisterForNavigation<PatientMenuPage, PatientPageViewModel>();
+            containerRegistry.RegisterForNavigation<PatientMenuPage, PatientMenuPageViewModel>();
             containerRegistry.RegisterForNavigation<PatientPage, PatientPageViewModel>();
             containerRegistry.RegisterForNavigation<DetailPage, DetailPageViewModel>();
         }

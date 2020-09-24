@@ -32,24 +32,24 @@ namespace XamarinPrismQrGen.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        public override void OnBackPressed()
-        {
-            Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
+        //public override void OnBackPressed()
+        //{
+        //    Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
             
-            builder.SetPositiveButton("확인", (senderAlert, args) => {
-                LoginViewModel.tcpClient.Close();
-                Finish();
-            });
+        //    builder.SetPositiveButton("확인", (senderAlert, args) => {
+        //        LoginViewModel.tcpClient.Close();
+        //        Finish();
+        //    });
 
-            builder.SetNegativeButton("취소", (senderAlert, args) => {
-                return;
-            });
+        //    builder.SetNegativeButton("취소", (senderAlert, args) => {
+        //        return;
+        //    });
 
-            Android.App.AlertDialog alterDialog = builder.Create();
-            alterDialog.SetTitle("알림");
-            alterDialog.SetMessage("프로그램을 종료하시겠습니까?");
-            alterDialog.Show();
-        }
+        //    Android.App.AlertDialog alterDialog = builder.Create();
+        //    alterDialog.SetTitle("알림");
+        //    alterDialog.SetMessage("프로그램을 종료하시겠습니까?");
+        //    alterDialog.Show();
+        //}
     }
 
     public class AndroidInitializer : IPlatformInitializer

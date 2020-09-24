@@ -58,14 +58,14 @@ namespace XamarinPrismQrGen.ViewModels
         }
 
 
-        //private DelegateCommand goMemDetailPageCommand;
+        private DelegateCommand goMemDetailPageCommand;
         //public DelegateCommand GoMemDetailPageCommand => goMemDetailPageCommand ?? (goMemDetailPageCommand = new DelegateCommand(async () => await GoMemDetailPage()));
 
-        //private DelegateCommand goPrescriptionPageCommand;
-        //public DelegateCommand GoPrescriptionPageCommand => goPrescriptionPageCommand ?? (goPrescriptionPageCommand = new DelegateCommand(async () => await GoPrescriptionPage()));
+        private DelegateCommand goPrescriptionPageCommand;
+        public DelegateCommand GoPrescriptionPageCommand => goPrescriptionPageCommand ?? (goPrescriptionPageCommand = new DelegateCommand(async () => await GoPrescriptionPage()));
 
         private DelegateCommand goQRPageCommand;
-        public DelegateCommand GoQRPageCommand => goQRPageCommand ?? (goQRPageCommand = new DelegateCommand(GoQRPage));
+        public DelegateCommand GoQRPageCommand => goQRPageCommand ?? (goQRPageCommand = new DelegateCommand(async () => await GoQRPage()));
         #endregion
 
 
@@ -111,7 +111,7 @@ namespace XamarinPrismQrGen.ViewModels
         /// </summary>
         /// <returns></returns>
 
-        async Task goprescriptionpage()
+        async Task GoPrescriptionPage()
         {
 
             NavigationParameters p = new NavigationParameters();
@@ -125,17 +125,8 @@ namespace XamarinPrismQrGen.ViewModels
         /// <returns></returns>
         async Task GoMemDetailPage()
         {
-            /*
-            // 로그인 안되어있다면 로그인페이지로 이동.
-            if (string.IsNullOrEmpty(Commons.ID))
-            {
-                NavigationParameters p = new NavigationParameters();
-                await _navigationService.NavigateAsync(로그인페이지);
-            }
-            else
-            {*/
+
             await _navigationService.NavigateAsync("MemDetailPage");
-            //}
 
         }
     }
