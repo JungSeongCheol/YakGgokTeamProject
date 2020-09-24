@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="ProcessApp.Views.InfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             Width="1000" Height="600" Background="White">
+    <ScrollViewer Visibility="Visible" VerticalScrollBarVisibility="Visible" Margin="10">
+        <GroupBox  Header="비밀번호 변경" Style="{DynamicResource MaterialDesignCardGroupBox}"  Margin="16">
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="병원 번호 : " Grid.Column="0" Grid.Row="0" FontSize="20" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding DEV_ID}" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
+                <TextBlock Text="병원 이름 : " Grid.Column="0" Grid.Row="1" FontSize="20" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
+                <TextBlock Text="병원 시도 : " Grid.Column="0" Grid.Row="2" FontSize="20" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding SIDO}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
+                <TextBlock Text="병원 시구군 : " Grid.Column="0" Grid.Row="3" FontSize="20" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding SIGUGUN}" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"/>
+                <TextBlock Text="병원 우편번호 : " Grid.Column="0" Grid.Row="4" FontSize="20" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding POSTNUM}" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"/>
+                <TextBlock Text="병원 주소 : " Grid.Column="0" Grid.Row="5" FontSize="20" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding ADDR}" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center"/>
+                <TextBlock Text="병원 전화 : " Grid.Column="0" Grid.Row="6" FontSize="20" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding CONTACT}" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center"/>
+                <TextBlock Text="병원 X : " Grid.Column="0" Grid.Row="7" FontSize="20" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding PX}" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center"/>
+                <TextBlock Text="병원 Y : " Grid.Column="0" Grid.Row="8" FontSize="20" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding PY}" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center"/>
+                <Button Grid.Column="1" Grid.Row="9" 
+                Command="{Binding BackCommand}" CommandParameter="MenuView"
+                Width="100" HorizontalAlignment="Right" Content="뒤로"/>
+            </Grid>
+        </StackPanel>
+        </GroupBox>
+    </ScrollViewer>
+
+</UserControl>

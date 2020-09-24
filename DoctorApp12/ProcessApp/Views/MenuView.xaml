@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="ProcessApp.Views.MenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             Width="1000" Height="600" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="환자ID" VerticalAlignment="Center"/>
+                <TextBox Text="{Binding PatientId}" VerticalAlignment="Center" Width="150" Margin="10"/>
+
+                <TextBlock Text="날짜" VerticalAlignment="Center"/>
+                <DatePicker SelectedDate="{Binding Datee}" VerticalAlignment="Center" Width="150" Margin="10"/>
+
+                <TextBlock Text="약국 고유ID" VerticalAlignment="Center"/>
+                <TextBox Text="{Binding MediNum}" VerticalAlignment="Center" Width="150" Margin="10"
+                       FontSize="10" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="A" Margin="10"/>
+                <TextBox Text="{Binding AM}" Width="100" Margin="10"/>
+
+                <TextBlock Text="B" Margin="10"/>
+                <TextBox Text="{Binding BM}" Width="100" Margin="10"/>
+
+                <TextBlock Text="C" Margin="10"/>
+                <TextBox Text="{Binding CM}" Width="100" Margin="10"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Command="{Binding InputCommand}" Background="White"
+                    Content="입력" Height="50" Width="100" Margin="10"/>
+            <Button Command="{Binding OutPutCommand}" Style="{DynamicResource MaterialDesignFlatLightBgButton}"
+                    Content="출력" Height="50" Width="100" Margin="10"/>
+            <Button Command="{Binding ResetsCommand}"  
+                    Content="초기화" Height="50" Width="100" Margin="10"/>
+            <Button Command="{Binding InfoCommand}" CommandParameter="InfoView"  Style="{DynamicResource MaterialDesignFlatLightBgButton}"
+                    Content="정보" Height="50" Width="100" Margin="10"/>
+            <Button Command="{Binding LoginCommand}" CommandParameter="LoginView"  Background="White"
+                    Content="로그아웃" Height="50" Width="100" Margin="10"/>
+
+        </StackPanel>
+        <ListView ItemsSource="{Binding PsList}"  Grid.Row="2" SelectedIndex="{Binding SIdx}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding GOCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="약국이름" Width="200" DisplayMemberBinding="{Binding PharmName}" />
+                    <GridViewColumn Header="이름" Width="200" DisplayMemberBinding="{Binding PatientId}"/>
+                    <GridViewColumn Header="날짜" Width="400" DisplayMemberBinding="{Binding TDate}"/>
+                    <GridViewColumn Header="약" Width="200" DisplayMemberBinding="{Binding Medicine}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>
