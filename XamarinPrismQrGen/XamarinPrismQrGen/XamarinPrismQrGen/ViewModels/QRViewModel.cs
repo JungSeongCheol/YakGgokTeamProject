@@ -68,8 +68,6 @@ namespace XamarinPrismQrGen.ViewModels
         }
 
 
-
-
         private void SQLConn()
         {
             //DB연동

@@ -113,7 +113,6 @@ namespace XamarinPrismQrGen.ViewModels
 
         async Task GoPrescriptionPage()
         {
-
             NavigationParameters p = new NavigationParameters();
             await _navigationService.NavigateAsync("PatientPage");
 
@@ -125,7 +124,6 @@ namespace XamarinPrismQrGen.ViewModels
         /// <returns></returns>
         async Task GoMemDetailPage()
         {
-
             await _navigationService.NavigateAsync("MemDetailPage");
 
         }
