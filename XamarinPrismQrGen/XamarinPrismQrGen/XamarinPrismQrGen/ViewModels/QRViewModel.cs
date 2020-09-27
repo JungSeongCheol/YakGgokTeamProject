@@ -4,8 +4,10 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using XamarinPrismQrGen.Helpers;
+using XamarinPrismQrGen.Models;
 
 namespace XamarinPrismQrGen.ViewModels
 {
@@ -17,15 +19,6 @@ namespace XamarinPrismQrGen.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
-
-        private string _QRString;
-        public string QRString
-        {
-            get { return _QRString; }
-            set { SetProperty(ref _QRString, value); }
-        }
-
-       
 
         private string _MedicineA;
         public string MedicineA
@@ -48,6 +41,13 @@ namespace XamarinPrismQrGen.ViewModels
             set { SetProperty(ref _MedicineC, value); }
         }
 
+        private ObservableCollection<MedicinePackage> mediPackage;
+        public ObservableCollection<MedicinePackage> MediPackage
+        {
+            get { return mediPackage; }
+            set { SetProperty(ref mediPackage, value); }
+        }
+
 
         private DelegateCommand _navigateCommand;
         private readonly INavigationService _navigationService;
@@ -56,10 +56,13 @@ namespace XamarinPrismQrGen.ViewModels
 
         public QRViewModel(INavigationService navigationService)
         {
+            MediPackage = new ObservableCollection<MedicinePackage>();
+
             Title = "QR";
             _navigationService = navigationService;
+          
             SQLConn();
-            QRString = $"[QR]{MedicineA},{MedicineB},{MedicineC}";
+            //QRString = $"[QR]{MedicineA},{MedicineB},{MedicineC}";
         }
 
         async void ExcuteNavigateCommand()
@@ -70,43 +73,22 @@ namespace XamarinPrismQrGen.ViewModels
 
         private void SQLConn()
         {
+            MediPackage.Clear();
             //DB연동
             using (var conn = new MySqlConnection(Commons.CONSTRINGList))
             {
                 try
                 {
-                    string strqry = "SELECT DevId, PatientId, A, B, C " +
-                                    " FROM medicineinfo ";
+                    string strqry = " SELECT  TDate, IdSub, A, B, C " + //2020 09 27수정
+                                    " FROM prescribeinfo " +
+                                    " WHERE getdate IS NULL " +
+                                    " AND PatientId = '1' " +
+                                    " ORDER BY Tdate Desc "; //medicineinfo
+                                                             //" WHERE " +; 
 
-                    MySqlCommand cmd = new MySqlCommand(strqry, conn);
                     conn.Open();
-
-                    //MySqlParameter paramId = new MySqlParameter("@Id", MySqlDbType.VarChar);
-                    //paramId.Value = Commons.ID;
-                    //cmd.Parameters.Add(paramId);
-
-                    //MySqlParameter paramStartDatePicker = new MySqlParameter("@StartDatePicker", MySqlDbType.DateTime);
-                    //paramStartDatePicker.Value = DateTime.Parse(StartDatePicker);
-                    //cmd.Parameters.Add(paramStartDatePicker);
-
-                    //MySqlParameter paramEndDatePicker = new MySqlParameter("@EndDatePicker", MySqlDbType.DateTime);
-                    //paramEndDatePicker.Value = DateTime.Parse(EndDatePicker);
-                    //cmd.Parameters.Add(paramEndDatePicker);
-
-                    //MySqlParameter paramSubject = new MySqlParameter("@Subject", MySqlDbType.VarChar);
-                    //if (isSelected && Selecteditem.Num > 0 && Selecteditem.Num < 8)
-                    //{
-                    //    paramSubject.Value = "%" + Selecteditem.Subject + "%";
-                    //}
-                    //else
-                    //{
-                    //    paramSubject.Value = "%";
-                    //}
-                    //cmd.Parameters.Add(paramSubject);
-
-                    //MySqlParameter paramInputSearch = new MySqlParameter("@InputSearch", MySqlDbType.VarChar);
-                    //paramInputSearch.Value = string.IsNullOrWhiteSpace(InputSearch) ? "%" : "%" + InputSearch + "%";
-                    //cmd.Parameters.Add(paramInputSearch);
+                    MySqlCommand cmd = new MySqlCommand(strqry, conn);
+                    
 
                     MySqlDataReader R = cmd.ExecuteReader();
 
@@ -114,19 +96,27 @@ namespace XamarinPrismQrGen.ViewModels
                     {
                         while (R.Read())
                         {
-                            MedicineA = R["A"].ToString();
-                            MedicineB = R["B"].ToString();
-                            MedicineC = R["C"].ToString();
+                            MedicinePackage temp = new MedicinePackage
+                            {
+                                TDate = $"진료일 : {DateTime.Parse(R["TDate"].ToString()).ToString("yyyy-MM-dd tt hh:mm")}",
+                                MediA_str = string.Format("A : {0}", (string.IsNullOrEmpty(R["A"].ToString())) ? "" : R["A"].ToString()),
+                                MediB_str = string.Format("B : {0}", (string.IsNullOrEmpty(R["B"].ToString())) ? "" : R["B"].ToString()),
+                                MediC_str = string.Format("C : {0}", (string.IsNullOrEmpty(R["C"].ToString())) ? "" : R["C"].ToString()),
+                                IdSub = (string.IsNullOrEmpty(R["IdSub"].ToString())) ? "" : R["IdSub"].ToString(),
+                                QRString = $"[QR]{R["IdSub"]},{ R["A"]},{R["B"]},{R["C"]}"
+                            };
+                            MediPackage.Add(temp);
                         }
                     }
                     else
                     {
-                    }
 
+                    }
                     R.Close();
                 }
                 catch (Exception ex)
                 {
+                    
                 }
             }
         }

@@ -50,7 +50,7 @@ namespace XamarinPrismQrGen.ViewModels
             set { SetProperty(ref noneQR, value); }
         }
 
-        private bool chkHaveQR;
+        private bool chkHaveQR=true;
         public bool ChkHaveQR
         {
             get { return chkHaveQR; }
