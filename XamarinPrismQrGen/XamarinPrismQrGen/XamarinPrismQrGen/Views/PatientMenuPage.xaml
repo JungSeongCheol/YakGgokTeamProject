@@ -17,7 +17,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label Text="{Binding Title}" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0"/>
-            <ImageButton Grid.Column="1" Source="setting.png" HorizontalOptions="End"  VerticalOptions="Center" Command="{Binding GoMemDetailPageCommand}" Margin="10,0" BackgroundColor="LightBlue"/>
+           
         </Grid>
 
         <Grid Grid.Row="1" BackgroundColor="LightSkyBlue" Margin="10,0">
