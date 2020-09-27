@@ -50,8 +50,8 @@ namespace XamarinPrismQrGen.ViewModels
             set { SetProperty(ref noneQR, value); }
         }
 
-        private bool chkHaveQR = true;
-        public bool ChkHaveQR 
+        private bool chkHaveQR=true;
+        public bool ChkHaveQR
         {
             get { return chkHaveQR; }
             set { SetProperty(ref chkHaveQR, value); }
@@ -113,7 +113,6 @@ namespace XamarinPrismQrGen.ViewModels
 
         async Task GoPrescriptionPage()
         {
-
             NavigationParameters p = new NavigationParameters();
             await _navigationService.NavigateAsync("PatientPage");
 
@@ -125,7 +124,6 @@ namespace XamarinPrismQrGen.ViewModels
         /// <returns></returns>
         async Task GoMemDetailPage()
         {
-
             await _navigationService.NavigateAsync("MemDetailPage");
 
         }

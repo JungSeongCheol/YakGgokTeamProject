@@ -144,10 +144,11 @@ namespace XamarinPrismQrGen.ViewModels
             Searchlist.Add(new Hospital { Num = 5, Subject = "이비인후과" });
             Searchlist.Add(new Hospital { Num = 6, Subject = "정형외과" });
             Searchlist.Add(new Hospital { Num = 7, Subject = "치과" });
-            Searchlist.Add(new Hospital { Num = 8, Subject = "직접입력" });
+            Searchlist.Add(new Hospital { Num = 8, Subject = "전체" });
         }
         private void SQLConn()
         {
+
             //DB연동
             patients.Clear();
 
@@ -155,7 +156,7 @@ namespace XamarinPrismQrGen.ViewModels
             {
                 try
                 {
-                    string strqry = " SELECT TDate, ParmName, HoName, Holocation, getdate, Medicine,Plocation, pName FROM prescribeinfo " +
+                    string strqry = " SELECT * FROM prescribeinfo " + //TDate, PharmName, HoName, Holocation, getdate, Plocation, pName, A, B, C
                                     " WHERE PatientId = @Id " +
                                     " AND  Tdate Between @StartDatePicker AND @EndDatePicker " +
                                     " AND HoName like @Subject " +
@@ -169,12 +170,12 @@ namespace XamarinPrismQrGen.ViewModels
                     paramId.Value = Commons.ID;
                     cmd.Parameters.Add(paramId);
 
-                    MySqlParameter paramStartDatePicker = new MySqlParameter("@StartDatePicker", MySqlDbType.DateTime);
-                    paramStartDatePicker.Value = DateTime.Parse(StartDatePicker);
+                    MySqlParameter paramStartDatePicker = new MySqlParameter("@StartDatePicker", MySqlDbType.VarChar);
+                    paramStartDatePicker.Value = DateTime.Parse(StartDatePicker).ToString("yyyy-MM-dd HH:mm:ss");
                     cmd.Parameters.Add(paramStartDatePicker);
 
-                    MySqlParameter paramEndDatePicker = new MySqlParameter("@EndDatePicker", MySqlDbType.DateTime);
-                    paramEndDatePicker.Value = DateTime.Parse(EndDatePicker);
+                    MySqlParameter paramEndDatePicker = new MySqlParameter("@EndDatePicker", MySqlDbType.VarChar);
+                    paramEndDatePicker.Value = DateTime.Parse(EndDatePicker).ToString("yyyy-MM-dd HH:mm:ss");
                     cmd.Parameters.Add(paramEndDatePicker);
 
                     MySqlParameter paramSubject = new MySqlParameter("@Subject", MySqlDbType.VarChar);
@@ -193,41 +194,43 @@ namespace XamarinPrismQrGen.ViewModels
                     cmd.Parameters.Add(paramInputSearch);
 
                     MySqlDataReader R = cmd.ExecuteReader();
-
-                    if (R.HasRows)
-                    {
-                        int i = 0;
-                        while (R.Read())
-                        {
-                            i = i + 1;
+                    
+                   if (R.HasRows)
+                   {
+                       int i = 0;
+                       while (R.Read())
+                       {
+                           i = i + 1;
 
                             patients.Add(
                                 new Patient
                                 {
                                     TDate = DateTime.Parse(R["TDate"].ToString()).ToString("yyyy-MM-dd tt hh:mm"),
                                     PName = R["pName"].ToString(),
-                                    ParmName = R["ParmName"].ToString(),
+                                    ParmName = R["PharmName"].ToString(),
                                     Plocation = R["Plocation"].ToString(),
                                     HoName = R["HoName"].ToString(),
                                     Holocation = R["Holocation"].ToString(),
-                                    Medicine = R["Medicine"].ToString(),
-                                    getdate = DateTime.Parse(R["Getdate"].ToString()).ToString("yyyy-MM-dd tt hh:mm")
-                                });
-                        }
-                        ScriptCount = "총 " + i.ToString() + "건";
-                    }
-                    else
-                    {
-                        ScriptCount = "데이터가 없습니다";
-                    }
-
+                                    Medicine = string.Format($"A:{0}, B:{1}, C:{2}", R["A"].ToString(), R["B"].ToString(), R["C"].ToString()), //2020-09-25 수정(Medicine)
+                                    getdate = string.IsNullOrEmpty(R["getdate"].ToString()) ? R["getdate"].ToString() : DateTime.Parse(R["getdate"].ToString()).ToString("yyyy-MM-dd HH:mm:ss") //널일경우, 아닐경우 2020-09-27수정
+                                }) ;
+                       }
+                       ScriptCount = "총 " + i.ToString() + "건";
+                   }
+                   else
+                   {
+                       ScriptCount = "데이터가 없습니다";
+                   }
+                    
                     R.Close();
                 }
                 catch (Exception ex)
                 {
                     ScriptCount = ex.Message;
                 }
+
             }
+
         }
     }
 }

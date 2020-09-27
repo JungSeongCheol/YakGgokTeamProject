@@ -6,14 +6,14 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}"
              x:Class="XamarinPrismQrGen.Views.PatientPage">
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Fill">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Text="기간" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="5"/>
-            <DatePicker Date="{Binding StartDatePicker}" HeightRequest="80" Grid.Column="1" Format="yyyy-MM-dd" Margin="0,0,10,0" />
+            <DatePicker Date="{Binding StartDatePicker}" Grid.Column="1" Format="yyyy-MM-dd" Margin="0,0,10,0" />
         </Grid>
 
         <Grid>
@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Text="~" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="5"/>
-            <DatePicker Date="{Binding EndDatePicker}" HeightRequest="80" Grid.Column="1"  Format="yyyy-MM-dd" Margin="0,0,10,0" />
+            <DatePicker Date="{Binding EndDatePicker}" Grid.Column="1"  Format="yyyy-MM-dd" Margin="0,0,10,0" />
         </Grid>
 
         <Grid>
@@ -36,7 +36,7 @@
             <Label Grid.Column="0" Text="병원검색" FontSize="15" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="5"/>
             <Picker Grid.Column="1" Title="전체" ItemsSource="{Binding Searchlist}" ItemDisplayBinding="{Binding Subject}" SelectedItem="{Binding Selecteditem, Mode=TwoWay}" />
             <Entry Grid.Column="2" Text="{Binding InputSearch, Mode=TwoWay}"  />
-            <Button  Grid.Column="3" Text="검색" HeightRequest="80" TextColor="White" FontSize="Body" Margin="5" Command="{Binding CheackCommand}"/>
+            <Button  Grid.Column="3" Text="검색" TextColor="White" FontSize="Body" Margin="5" Command="{Binding CheackCommand}"/>
         </Grid>
 
         <Label Text = "{Binding ScriptCount}" FontSize="Small" HorizontalTextAlignment="Center"/>
@@ -53,8 +53,8 @@
                         <StackLayout Orientation="Vertical" HorizontalOptions="Fill" BackgroundColor="AliceBlue" >
                             <Label Text = "{Binding TDate}" FontSize="20" HorizontalOptions="StartAndExpand" FontAttributes="Bold" Margin="10,0"/>
                             <Label Text = "{Binding HoName}" FontSize="15" HorizontalOptions="EndAndExpand" Margin="10,0"/>
-                            <Label Text = "{Binding ParmName}" FontSize="15" HorizontalOptions="EndAndExpand" Margin="10,0"/>
                             <Label Text = "{Binding Medicine}" FontSize="15" HorizontalOptions="EndAndExpand" Margin="10,0"/>
+                            <Label Text = "{Binding ParmName}" FontSize="15" HorizontalOptions="EndAndExpand" Margin="10,0"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

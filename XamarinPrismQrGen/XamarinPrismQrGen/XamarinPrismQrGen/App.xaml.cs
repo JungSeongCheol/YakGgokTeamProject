@@ -19,7 +19,8 @@ namespace XamarinPrismQrGen
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("Login");
+            //await NavigationService.NavigateAsync("Login");
+            await NavigationService.NavigateAsync("PatientMenuPage");
             //await NavigationService.NavigateAsync("NavigationPage/ViewA");
         }
 

@@ -8,27 +8,27 @@
              x:Class="XamarinPrismQrGen.Views.QR"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
         <!--<Label Text="{Binding Title}"/>-->
         <Label Text="{Binding Title}" />
-        <Label Text = "{Binding MedicineA}" FontSize="15" HorizontalOptions="EndAndExpand" Margin="10,0"/>
-        <Label Text = "{Binding MedicineB}" FontSize="15" HorizontalOptions="EndAndExpand" Margin="10,0"/>
-        <Label Text = "{Binding MedicineC}" FontSize="15" HorizontalOptions="EndAndExpand" Margin="10,0"/>
-        
-        <!--<ListView ItemsSource="{Binding Patients, Mode=TwoWay}" SelectionMode="Single"  RowHeight="120" SelectedItem="{Binding Seletedlist}" >
+
+        <ListView VerticalScrollBarVisibility="Default" ItemsSource="{Binding MediPackage, Mode=TwoWay}" SelectionMode="Single"  RowHeight="650" SelectedItem="{Binding Seletedlist}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Vertical" HorizontalOptions="Fill" BackgroundColor="AliceBlue" >
-
+                        <StackLayout HorizontalOptions="Fill" BackgroundColor="AliceBlue" Padding="10">
+                            <Label Text = "{Binding TDate}" FontSize="25" HorizontalOptions="StartAndExpand" FontAttributes="Bold" Margin="10,0"/>
+                            <Label Text = "{Binding MediA_str}" FontSize="25" HorizontalOptions="EndAndExpand" Margin="10,0"/>
+                            <Label Text = "{Binding MediB_str}" FontSize="25" HorizontalOptions="EndAndExpand" Margin="10,0"/>
+                            <Label Text = "{Binding MediC_str}" FontSize="25" HorizontalOptions="EndAndExpand" Margin="10,0"/>
+                            <zxing:ZXingBarcodeImageView WidthRequest="400" HeightRequest="200" BarcodeValue="{Binding QRString}"
+                                         BarcodeFormat="QR_CODE"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>-->
-        <!--<Button Text="Navigate to MainPage" Command="{Binding NavigateCommand}"/>-->
-        <zxing:ZXingBarcodeImageView WidthRequest="300" HeightRequest="100" BarcodeValue="{Binding QRString}"
-                                         BarcodeFormat="QR_CODE"/>
+            </ListView>
+            <!--<Button Text="Navigate to MainPage" Command="{Binding NavigateCommand}"/>-->
     </StackLayout>
     
 </ContentPage>
