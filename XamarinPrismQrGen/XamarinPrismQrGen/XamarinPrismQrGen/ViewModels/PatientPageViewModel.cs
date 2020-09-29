@@ -125,7 +125,7 @@ namespace XamarinPrismQrGen.ViewModels
             NavigationParameters p = new NavigationParameters();
             //p.add(key,value)
             p.Add("SeletedPatient", Seletedlist);
-
+            Commons.PageCount = 3;
             await _navigationService.NavigateAsync("DetailPage", p);
         }
         private void cheack()
@@ -194,13 +194,13 @@ namespace XamarinPrismQrGen.ViewModels
                     cmd.Parameters.Add(paramInputSearch);
 
                     MySqlDataReader R = cmd.ExecuteReader();
-                    
-                   if (R.HasRows)
-                   {
-                       int i = 0;
-                       while (R.Read())
-                       {
-                           i = i + 1;
+
+                    if (R.HasRows)
+                    {
+                        int i = 0;
+                        while (R.Read())
+                        {
+                            i = i + 1;
 
                             patients.Add(
                                 new Patient
@@ -213,15 +213,15 @@ namespace XamarinPrismQrGen.ViewModels
                                     Holocation = R["Holocation"].ToString(),
                                     Medicine = string.Format($"A:{0}, B:{1}, C:{2}", R["A"].ToString(), R["B"].ToString(), R["C"].ToString()), //2020-09-25 수정(Medicine)
                                     getdate = string.IsNullOrEmpty(R["getdate"].ToString()) ? R["getdate"].ToString() : DateTime.Parse(R["getdate"].ToString()).ToString("yyyy-MM-dd HH:mm:ss") //널일경우, 아닐경우 2020-09-27수정
-                                }) ;
-                       }
-                       ScriptCount = "총 " + i.ToString() + "건";
-                   }
-                   else
-                   {
-                       ScriptCount = "데이터가 없습니다";
-                   }
-                    
+                                });
+                        }
+                        ScriptCount = "총 " + i.ToString() + "건";
+                    }
+                    else
+                    {
+                        ScriptCount = "데이터가 없습니다";
+                    }
+
                     R.Close();
                 }
                 catch (Exception ex)

@@ -82,13 +82,17 @@ namespace XamarinPrismQrGen.ViewModels
                     string strqry = " SELECT  TDate, IdSub, A, B, C " + //2020 09 27수정
                                     " FROM prescribeinfo " +
                                     " WHERE getdate IS NULL " +
-                                    " AND PatientId = '1' " +
+                                    " AND PatientId = @Id " +
                                     " ORDER BY Tdate Desc "; //medicineinfo
                                                              //" WHERE " +; 
 
-                    conn.Open();
                     MySqlCommand cmd = new MySqlCommand(strqry, conn);
+                    conn.Open();
                     
+
+                    MySqlParameter paramId = new MySqlParameter("@Id", MySqlDbType.VarChar);
+                    paramId.Value = Commons.ID;
+                    cmd.Parameters.Add(paramId);
 
                     MySqlDataReader R = cmd.ExecuteReader();
 
@@ -103,7 +107,7 @@ namespace XamarinPrismQrGen.ViewModels
                                 MediB_str = string.Format("B : {0}", (string.IsNullOrEmpty(R["B"].ToString())) ? "" : R["B"].ToString()),
                                 MediC_str = string.Format("C : {0}", (string.IsNullOrEmpty(R["C"].ToString())) ? "" : R["C"].ToString()),
                                 IdSub = (string.IsNullOrEmpty(R["IdSub"].ToString())) ? "" : R["IdSub"].ToString(),
-                                QRString = $"[QR]{R["IdSub"]},{ R["A"]},{R["B"]},{R["C"]}"
+                                QRString = $"{R["IdSub"]},{R["A"]},{R["B"]},{R["C"]}"
                             };
                             MediPackage.Add(temp);
                         }

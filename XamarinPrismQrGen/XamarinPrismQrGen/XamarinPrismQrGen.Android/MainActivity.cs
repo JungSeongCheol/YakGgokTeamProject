@@ -5,6 +5,10 @@ using Prism;
 using Prism.Ioc;
 using System.Net.Sockets;
 using XamarinPrismQrGen.ViewModels;
+using XamarinPrismQrGen.Helpers;
+using Android.Icu.Text;
+using AndroidX.Fragment.App;
+using AndroidX.Activity;
 
 namespace XamarinPrismQrGen.Droid
 {
@@ -32,24 +36,41 @@ namespace XamarinPrismQrGen.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        //public override void OnBackPressed()
-        //{
-        //    Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
-            
-        //    builder.SetPositiveButton("확인", (senderAlert, args) => {
-        //        LoginViewModel.tcpClient.Close();
-        //        Finish();
-        //    });
 
-        //    builder.SetNegativeButton("취소", (senderAlert, args) => {
-        //        return;
-        //    });
+        public override void OnBackPressed()
+        {
+            if (Commons.PageCount == 1)
+            {
+                Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
 
-        //    Android.App.AlertDialog alterDialog = builder.Create();
-        //    alterDialog.SetTitle("알림");
-        //    alterDialog.SetMessage("프로그램을 종료하시겠습니까?");
-        //    alterDialog.Show();
-        //}
+                builder.SetPositiveButton("확인", (senderAlert, args) =>
+                {
+                    LoginViewModel.tcpClient.Close();
+                    Finish();
+                });
+
+                builder.SetNegativeButton("취소", (senderAlert, args) =>
+                {
+                    return;
+                });
+
+                Android.App.AlertDialog alterDialog = builder.Create();
+                alterDialog.SetTitle("알림");
+                alterDialog.SetMessage("프로그램을 종료하시겠습니까?");
+                alterDialog.Show();
+            }
+
+            else if(Commons.PageCount > 1)
+            {
+                Commons.PageCount--;
+                base.OnBackPressed();
+            }
+
+            else
+            {
+                base.OnBackPressed();
+            }
+        }
     }
 
     public class AndroidInitializer : IPlatformInitializer

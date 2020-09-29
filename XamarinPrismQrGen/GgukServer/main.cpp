@@ -24,7 +24,7 @@ SOCKET serverSocket;
 WSAData wsaData;
 SOCKADDR_IN serverAddress;
 
-const sql::SQLString server = "tcp://127.0.0.1:3306";
+const sql::SQLString server = "tcp://192.168.0.13:3306";
 const sql::SQLString username = "root";
 const sql::SQLString password = "mysql_p@ssw0rd";
 
